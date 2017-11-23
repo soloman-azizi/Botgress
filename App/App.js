@@ -2,14 +2,16 @@ const webDriver = require('selenium-webdriver'),
   By = webDriver.By,
   until = webDriver.until;
 
-var driver = new webDriver.Builder()
-  .forBrowser('chrome')
-  .build();
+
 
 const timeout = (ms) => new Promise((res) => setTimeout(res, ms))
 
 const bot = async (userName, passWord, hashTag)=>{
   var liked = 0, commented = 0, followed = 0, post = 1, exception = 0;
+
+  var driver = new webDriver.Builder()
+    .forBrowser('chrome')
+    .build();
 
   await driver.get('http://www.instagram.com');
 

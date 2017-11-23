@@ -3,21 +3,26 @@
 const {bot} = require('./App');
 
 var d;
+
+const timeout = (ms) => new Promise((res) => setTimeout(res, ms))
 //Call to database here to get hours the code should run.
-startHours=[1, 4, 12, 15, 19, 22];
+startHours=[13, 4, 12, 15, 19, 22];
 
 //Call to database to get user information
-
-while(true){
-  d = new Date();
-  for(var i=0; i<startHours.length; i++){
-    if(startHours[i] === d.getHours()){
-      bot('salad_bar95', 'ironman8', 'dogs');
-      d = new Date();
-      console.log('Completed session at:', d);
+const scheduler = async ()=>{
+  while(true){
+    d = new Date();
+    for(var i=0; i<startHours.length; i++){
+      if(startHours[i] === d.getHours()){
+        await bot('salad_bar95', 'ironman8', 'dogs');
+        d = new Date();
+        console.log('Completed session at:', d);
+      };
     };
+    d = new Date();
+    console.log('Sleeping:', d);
+    await timeout(600000);
   };
-  d = new Date();
-  console.log('Sleeping:', d);
-  
 };
+
+scheduler();
