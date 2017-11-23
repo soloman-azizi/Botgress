@@ -1,0 +1,15 @@
+{
+  "name": "soloflu",
+  "version": "1.0.0",
+  "description": "Social media helper.",
+  "main": "App.js",
+  "dependencies": {
+    "selenium-webdriver": "^3.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "S.A.",
+  "license": "ISC"
+}
