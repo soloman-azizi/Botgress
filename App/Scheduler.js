@@ -6,15 +6,22 @@ var d;
 
 const timeout = (ms) => new Promise((res) => setTimeout(res, ms))
 //Call to database here to get hours the code should run.
-startHours=[13, 4, 12, 15, 19, 22];
+startHours=[1, 4, 12, 15, 19, 22];
 
 //Call to database to get user information
-const scheduler = async ()=>{
+var user = {
+  username: 'salad_bar95',
+  password: 'ironman8',
+  hashtag: 'dogs'
+};
+
+//Check scheduler
+const scheduler = async (user)=>{
   while(true){
     d = new Date();
     for(var i=0; i<startHours.length; i++){
       if(startHours[i] === d.getHours()){
-        await bot('salad_bar95', 'ironman8', 'dogs');
+        await bot(user);
         d = new Date();
         console.log('Completed session at:', d);
       };
@@ -25,4 +32,4 @@ const scheduler = async ()=>{
   };
 };
 
-scheduler();
+scheduler(user);

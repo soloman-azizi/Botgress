@@ -6,7 +6,7 @@ const webDriver = require('selenium-webdriver'),
 
 const timeout = (ms) => new Promise((res) => setTimeout(res, ms))
 
-const bot = async (userName, passWord, hashTag)=>{
+const bot = async (user)=>{
   var liked = 0, commented = 0, followed = 0, post = 1, exception = 0;
 
   var driver = new webDriver.Builder()
@@ -21,11 +21,11 @@ const bot = async (userName, passWord, hashTag)=>{
   //Enter username and password
   var userNameElem = await driver.findElement(By.name('username'));
   userNameElem.clear();
-  userNameElem.sendKeys(userName);
+  userNameElem.sendKeys(user.username);
 
   var passwordElem = await driver.findElement(By.name('password'));
   passwordElem.clear();
-  passwordElem.sendKeys(passWord);
+  passwordElem.sendKeys(user.password);
 
   //Click the log in button and go to home page
   await driver.findElement(By.xpath('//form[1]/span/button')).click();
@@ -39,7 +39,7 @@ const bot = async (userName, passWord, hashTag)=>{
   //Find the search bar and search for a #hashtag
   await driver.findElement(By.className('_96n9j')).click();
   var searchElem = await driver.findElement(By.xpath('//nav/div[2]/div/div/div[2]/input'));
-  searchElem.sendKeys('#', hashTag);
+  searchElem.sendKeys('#', user.hashtag);
   await timeout(5000);
   await driver.findElement(By.className('_t3f9x')).click();
 

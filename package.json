@@ -1,9 +1,12 @@
 {
-  "name": "soloflu",
+  "name": "botgress",
   "version": "1.0.0",
   "description": "Social media helper.",
   "main": "App.js",
   "dependencies": {
+    "express": "^4.16.2",
+    "mongodb": "^2.2.33",
+    "mongoose": "^4.13.4",
     "selenium-webdriver": "^3.6.0"
   },
   "devDependencies": {},
