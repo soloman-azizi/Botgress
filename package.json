@@ -6,7 +6,7 @@
   "dependencies": {
     "express": "^4.16.2",
     "mongodb": "^2.2.33",
-    "mongoose": "^4.13.4",
+    "mongoose": "^4.5.9",
     "selenium-webdriver": "^3.6.0"
   },
   "devDependencies": {},

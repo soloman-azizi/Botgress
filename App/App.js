@@ -21,7 +21,7 @@ const bot = async (user)=>{
   //Enter username and password
   var userNameElem = await driver.findElement(By.name('username'));
   userNameElem.clear();
-  userNameElem.sendKeys(user.username);
+  userNameElem.sendKeys(user.email);
 
   var passwordElem = await driver.findElement(By.name('password'));
   passwordElem.clear();
@@ -67,7 +67,7 @@ const bot = async (user)=>{
   }catch(e){
     console.log('Error: Unable to interact with post');
   };
-  driver.quit();
+  await driver.quit();
 };
 
 //bot('salad_bar95', 'ironman8', 'dogs');

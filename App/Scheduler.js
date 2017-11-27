@@ -1,7 +1,6 @@
 //Scheduler runs the bot app at specified times. First it makes a call to the database, then runs bot. During downtime it prints a sleeping message
-
 const {bot} = require('./App');
-
+const {userModel, hashtagModel} = require('./../Database/Models');
 var d;
 
 const timeout = (ms) => new Promise((res) => setTimeout(res, ms))
@@ -9,11 +8,31 @@ const timeout = (ms) => new Promise((res) => setTimeout(res, ms))
 startHours=[1, 4, 12, 15, 19, 22];
 
 //Call to database to get user information
-var user = {
-  username: 'salad_bar95',
-  password: 'ironman8',
-  hashtag: 'dogs'
+
+
+var userHashtag = userModel.find({
+  email: 'salmabarheem@gmail.com'
+});
+
+const userDetails = async (email)=>{
+
+  var user = {}
+
+  var userResult = await userModel.findOne({
+    email: 'salmabarheem@gmail.com'
+  });
+  user.email = userResult.email;
+  user.password = userResult.password;
+
+  var hashtagResult = await hashtagModel.findOne({
+    email: 'salmabarheem@gmail.com'
+  });
+  user.hashtag = hashtagResult.hashtags[0];
+
+  return user;
 };
+
+userDetails('salmabarheem@gmail.com');
 
 //Check scheduler
 const scheduler = async (user)=>{
